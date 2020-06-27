@@ -1,0 +1,44 @@
+{
+  "name": "my-boilerplate-next-app",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://VuCoKhoi.github.io/my-boilerplate-next-app",
+  "scripts": {
+    "dev": "node server.js",
+    "analyze": "ANALYZE=true next build",
+    "build": "next build",
+    "start": "next build && NODE_ENV=production node server.js",
+    "export": "next build && next export",
+    "deploy:ghp": "yarn export && touch out/.nojekyll && gh-pages -t -d out",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
+    "extract:message": "extract-messages -l=vi,en  --default-locale=vi --flat=true -o resources/lang 'resources/components/**/*.js'"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.10.1",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "gh-pages": "^2.1.1",
+    "lru-cache": "^5.1.1",
+    "next": "latest",
+    "react": "16.11.0",
+    "react-dom": "16.11.0",
+    "react-intl": "^3.4.0",
+    "react-spinkit": "^3.0.0"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^9.4.4",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "extract-react-intl-messages": "^2.3.3",
+    "prettier": "^1.18.2"
+  }
+}
