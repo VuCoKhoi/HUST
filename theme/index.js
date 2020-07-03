@@ -1,7 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-import textTheme from './text.theme';
-import paletteTheme from './palette.theme';
+import * as textTheme from './text.theme';
+import * as paletteTheme from './palette.theme';
 
 // Create a theme instance.
 const theme = createMuiTheme({

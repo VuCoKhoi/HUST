@@ -3,7 +3,7 @@ import { Box } from '@material-ui/core';
 
 const Text = withStyles(theme => ({
   root: {
-    ...theme.text.default,
+    ...theme.text.auto,
   },
 }))(Box);
 export default Text;

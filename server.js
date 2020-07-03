@@ -1,7 +1,6 @@
 const express = require('express');
 const next = require('next');
 const LRUCache = require('lru-cache');
-const path = require('path');
 const compression = require('compression');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
@@ -26,7 +25,20 @@ const ssrCache = new LRUCache({
  * an immediate page change (e.g a locale stored in req.session)
  */
 function getCacheKey(req) {
-  return `${req.path}`;
+  let userAgent;
+  if (req) {
+    // if you are on the server and you get a 'req' property from your context
+    userAgent = req.headers['user-agent']; // get the user-agent from the headers
+  } else {
+    userAgent = navigator.userAgent; // if you are on the client you can access the navigator from the window object
+  }
+  const isMobile = Boolean(
+    userAgent.match(
+      /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i,
+    ),
+  );
+
+  return `${req.path}${isMobile}`;
 }
 
 async function renderAndCache(req, res) {
@@ -63,11 +75,7 @@ async function renderAndCache(req, res) {
 app.prepare().then(() => {
   const server = express();
   server.use(compression());
-  server.get('/favicon.ico', (req, res) =>
-    res
-      .status(200)
-      .sendFile('favicon.ico', { root: path.join(__dirname, '/static/') }),
-  );
+  server.use(express.static('static'));
 
   server.get('/_next/*', (req, res) => {
     /* serving _next static content using next.js handler */

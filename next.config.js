@@ -6,8 +6,8 @@ module.exports = withBundleAnalyzer({
   poweredByHeader: false,
   // target: 'serverless',
   // deploy to github page
-  assetPrefix:
-    process.env.NODE_ENV === 'production' ? '/my-boilerplate-next-app/' : '',
+  // assetPrefix:
+  //   process.env.NODE_ENV === 'production' ? '/my-boilerplate-next-app/' : '',
 
   webpack: config => {
     // Fixes npm packages that depend on `fs` module

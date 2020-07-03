@@ -1,27 +1,20 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core';
-import Head from 'next/head';
-import useBlockIframe from '../src/customUse/useBlockIframe';
-import Text from '../src/components/Text';
+import React, { useContext } from 'react';
 
-const useStyles = makeStyles({
-  test: {
-    color: 'red',
-  },
-});
+import Header from '../components/home/Header';
+import Sec1 from '../components/home/Sec1';
+import withDevice from '../components/withDevice';
+import { RootContext } from '../context_api';
+import Sec2 from '../components/home/Sec2';
 
-const Home = () => {
-  const classes = useStyles();
-  useBlockIframe();
+const Home = ({ isMobile }) => {
+  const { matchMobile } = useContext(RootContext);
   return (
-    <div className={classes.test}>
-      <Head>
-        <title>Home</title>
-      </Head>
-      <Text>boilerplate - power by khoivc</Text>
-      <Text>boilerplate - power by khoivc</Text>
+    <div>
+      <Header isMobile={isMobile || matchMobile} />
+      <Sec1 isMobile={isMobile || matchMobile} />
+      <Sec2 />
     </div>
   );
 };
 
-export default Home;
+export default withDevice(Home);

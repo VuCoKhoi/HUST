@@ -13,15 +13,19 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
-    "extract:message": "extract-messages -l=vi,en  --default-locale=vi --flat=true -o resources/lang 'resources/components/**/*.js'"
+    "extract:message": "extract-messages -l=vi,en  --default-locale=vi --flat=true -o ./lang 'components/**/*.js'"
   },
   "dependencies": {
     "@material-ui/core": "^4.10.1",
+    "@material-ui/icons": "^4.9.1",
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "gh-pages": "^2.1.1",
+    "js-cookie": "^2.2.1",
     "lru-cache": "^5.1.1",
     "next": "latest",
+    "next-cookies": "^2.0.3",
+    "nprogress": "^0.2.0",
     "react": "16.11.0",
     "react-dom": "16.11.0",
     "react-intl": "^3.4.0",
@@ -30,6 +34,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^9.4.4",
     "babel-eslint": "^10.0.3",
+    "babel-plugin-react-intl": "^5.1.2",
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.5.0",
@@ -38,7 +43,7 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "extract-react-intl-messages": "^2.3.3",
+    "extract-react-intl-messages": "2.2.1",
     "prettier": "^1.18.2"
   }
 }
