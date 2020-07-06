@@ -3,6 +3,7 @@ import { makeStyles, Drawer } from '@material-ui/core';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
 import MenuIcon from '@material-ui/icons/Menu';
+import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 
 import FlexBox from '../FlexBox';
 import Text from '../Text';
@@ -26,13 +27,10 @@ const useStyles = makeStyles({
     width: '100%',
     maxWidth: 1136,
   }),
-  logo: {
-    backgroundImage: 'url(/img/logo.png)',
-    width: 140,
-    height: 50,
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain',
+  upload: {
+    width: 40,
+    height: 40,
+    cursor: 'pointer',
   },
   menuItem: props => ({
     padding: '10px 5px',
@@ -90,7 +88,9 @@ function Header({ isMobile }) {
   return (
     <FlexBox className={classes.root}>
       <FlexBox className={classes.container}>
-        <FlexBox className={classes.logo} />
+        <Link href="/upload">
+          <AddAPhotoIcon className={classes.upload} />
+        </Link>
         <FlexBox alignItems="center">
           {!isMobile && (
             <FlexBox className={classes.menuContainer}>

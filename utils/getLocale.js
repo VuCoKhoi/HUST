@@ -17,7 +17,7 @@ const getLocale = async ctx => {
     } else {
       // check if user has set locale
       const systemLocale =
-        ctx.req.headers['accept-language'] ||
+        (ctx.req && ctx.req.headers['accept-language']) ||
         navigator.language ||
         defaultLocale;
       locale = acceptLanguages.includes(systemLocale)
